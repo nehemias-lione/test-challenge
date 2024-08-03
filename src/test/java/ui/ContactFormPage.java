@@ -4,7 +4,7 @@ import models.ContactModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class FormContactPage {
+public class ContactFormPage {
     protected WebDriver driver;
 
     private final By firstNameInput = By.id("firstName");
@@ -21,7 +21,7 @@ public class FormContactPage {
     private final By submitButton = By.id("submit");
     private final By cancelButton = By.id("cancel");
 
-    public FormContactPage(WebDriver driver) {
+    public ContactFormPage(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -39,7 +39,28 @@ public class FormContactPage {
         driver.findElement(countryInput).sendKeys(contact.getCountry());
     }
 
+    public void updateContactDataForm(ContactModel contact){
+        driver.findElement(firstNameInput).clear();
+        driver.findElement(firstNameInput).sendKeys(contact.getFirstName());
+        driver.findElement(lastNameInput).clear();
+        driver.findElement(lastNameInput).sendKeys(contact.getLastName());
+        driver.findElement(phoneInput).clear();
+        driver.findElement(phoneInput).sendKeys(contact.getPhone());
+    }
+
     public void clickOnSubmitButton(){
         driver.findElement(submitButton).click();
+    }
+
+    public String getFirstName(){
+        return driver.findElement(firstNameInput).getText();
+    }
+
+    public String getLastName(){
+        return driver.findElement(lastNameInput).getText();
+    }
+
+    public String getPhone(){
+        return driver.findElement(phoneInput).getText();
     }
 }
