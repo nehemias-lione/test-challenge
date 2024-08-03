@@ -1,11 +1,10 @@
-
 # Test Challenge Endava
 
 Test Challenge with Selenium Java, Junit5 and Rest Assured.
 
 ## Installation
 
-Install project 
+Install project
 
         mvn install
 
@@ -15,5 +14,3 @@ Install project
 To run tests, run the following command
 
       mvn clean test
-
-
