@@ -3,6 +3,9 @@ package ui;
 import models.ContactModel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class ContactFormPage {
     protected WebDriver driver;
@@ -40,13 +43,17 @@ public class ContactFormPage {
     }
 
     public void updateContactDataForm(ContactModel contact){
-        driver.findElement(firstNameInput).clear();
-        driver.findElement(firstNameInput).sendKeys(contact.getFirstName());
-        driver.findElement(lastNameInput).clear();
-        driver.findElement(lastNameInput).sendKeys(contact.getLastName());
-        driver.findElement(phoneInput).clear();
-        driver.findElement(phoneInput).sendKeys(contact.getPhone());
+        clearElements();
+        fillContactDataForm(contact);
     }
+
+    private void clearElements() {
+        List<WebElement> inputs = driver.findElements(By.xpath("//input"));
+        for (WebElement input : inputs) {
+            input.clear();
+        }
+    }
+
 
     public void clickOnSubmitButton(){
         driver.findElement(submitButton).click();

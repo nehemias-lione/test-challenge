@@ -1,6 +1,7 @@
 package tests;
 
 import models.ContactModel;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,11 +14,13 @@ public class ContactsTest {
     ContactModel contact;
     Utils utils;
     WebSteps webSteps;
+    ApiSteps apiSteps;
 
     @BeforeEach
     public void setup() {
         driver = new ChromeDriver();
         webSteps = new WebSteps(driver);
+        apiSteps = new ApiSteps();
         utils = new Utils();
         HomePage homePage = new HomePage(driver);
         homePage.goTo();
@@ -32,6 +35,7 @@ public class ContactsTest {
         contact = utils.getFakerDataContact();
         webSteps.addContactWithFakerData(contact);
         webSteps.checkContactCreated(contact);
+        apiSteps.getContact(contact);
     }
 
     @Test
@@ -40,12 +44,14 @@ public class ContactsTest {
         contact = utils.getFakerDataContact();
         webSteps.updateContact(contact);
         webSteps.updatedContactValidation(contact);
+        apiSteps.getContact(contact);
     }
 
     @Test
     void deleteContact(){
         webSteps.deleteContact();
         webSteps.checkContactDeleted();
+        apiSteps.emptyContactsList();
     }
 
     @AfterEach
