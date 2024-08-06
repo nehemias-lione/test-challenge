@@ -1,15 +1,13 @@
 package steps;
 
-import io.restassured.RestAssured;
-import io.restassured.RestAssured.*;
-import io.restassured.matcher.RestAssuredMatchers.*;
-import io.restassured.response.Response;
-import models.ContactModel;
-import org.hamcrest.Matchers.*;
-
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.authentication;
+import static io.restassured.RestAssured.baseURI;
+import static io.restassured.RestAssured.get;
+import static io.restassured.RestAssured.oauth2;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
+
+import models.ContactModel;
 
 public class ApiSteps {
 

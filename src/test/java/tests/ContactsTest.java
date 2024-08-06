@@ -1,11 +1,18 @@
 package tests;
 
-import models.ContactModel;
-import org.checkerframework.checker.units.qual.A;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import steps.*;
+
+import models.ContactModel;
+import steps.ApiSteps;
+import steps.Utils;
+import steps.WebSteps;
 import ui.HomePage;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
